@@ -1,6 +1,6 @@
 package com.andreicampigotto.githubusersapi.data.repository
 
-import com.andreicampigotto.githubusersapi.data.remote.api.IGitHubApiUserApi
+import com.andreicampigotto.githubusersapi.data.remote.api.IGitHubUserApi
 import com.andreicampigotto.githubusersapi.domain.mapper.asDomainModel
 import com.andreicampigotto.githubusersapi.domain.model.UserModel
 import com.andreicampigotto.githubusersapi.domain.repository.IGitHubUserRepository
@@ -15,7 +15,7 @@ sealed class State<out T> {
 }
 
 class GitHubUserRepository(
-    private val iGitHubApiUserApi: IGitHubApiUserApi,
+    private val iGitHubApiUserApi: IGitHubUserApi,
 ): IGitHubUserRepository {
     override suspend fun getUserInfo(userName: String): State<UserModel> {
         return withContext(Dispatchers.IO) {
