@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/imageViewUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,6 +87,68 @@
         app:layout_constraintStart_toEndOf="@+id/textViewCompany"
         app:layout_constraintTop_toBottomOf="@+id/textViewBio"
         tools:text="Location" />
+
+    <TextView
+        android:id="@+id/textViewWebSite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        tools:text="WebSite"
+        android:padding="8dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLocation"
+        app:layout_constraintStart_toStartOf="@+id/textViewCompany"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCompany" />
+
+    <TextView
+        android:id="@+id/textViewTwitter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Twitter"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewWebSite"
+        app:layout_constraintStart_toStartOf="@+id/textViewWebSite"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWebSite" />
+
+    <TextView
+        android:id="@+id/textViewFollowers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Followers"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewFollowing"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/textViewTwitter"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTwitter" />
+
+    <TextView
+        android:id="@+id/textViewFollowing"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Following"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTwitter"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewFollowers"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTwitter" />
+
+    <TextView
+        android:id="@+id/textViewRepositories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Repositories"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFollowing"
+        app:layout_constraintStart_toStartOf="@+id/textViewFollowers"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFollowers" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
