@@ -1,3 +1,5 @@
+package com.andreicampigotto.githubusersapi
+
 import android.app.Application
 import com.andreicampigotto.githubusersapi.di.NetworkModule
 import com.andreicampigotto.githubusersapi.di.PresentationModule
