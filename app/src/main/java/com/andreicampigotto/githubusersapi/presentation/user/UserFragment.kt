@@ -3,10 +3,12 @@ package com.andreicampigotto.githubusersapi.presentation.user
 
 import android.R.attr.visible
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.andreicampigotto.githubusersapi.R
 import com.andreicampigotto.githubusersapi.data.repository.State
 import com.andreicampigotto.githubusersapi.databinding.FragmentUserBinding
 import com.andreicampigotto.githubusersapi.domain.model.UserModel
@@ -14,35 +16,34 @@ import com.bumptech.glide.Glide
 import org.koin.android.ext.android.inject
 
 
-class UserFragment(): Fragment(R.layout.fragment_user){
+class UserFragment(): Fragment(){
 
     private val viewModel by inject<UserViewModel>()
     private lateinit var binding: FragmentUserBinding
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentUserBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     private fun observables() {
-        viewModel.users.observe(this@UserFragment){
+        viewModel.users.observe(viewLifecycleOwner){
             loadUser(it)
         }
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-//        viewModel.getUserInfo("andreicampigotto")
-        observables()
-    }
-
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//            super.onViewCreated(view, savedInstanceState)
-//
-//            binding = FragmentUserBinding.bind(view)
-//            viewModel.users.observe(viewLifecycleOwner, observables())
-//
-//            viewModel.getUserInfo("andreicampigotto")
-//            //searchRepository()
-//        }
+            observables()
+            viewModel.getUserInfo("andreicampigotto")
+            //searchRepository()
+        }
 
 
     fun loadUser(state: State<UserModel>) {
@@ -50,21 +51,29 @@ class UserFragment(): Fragment(R.layout.fragment_user){
             is State.Loading -> {
                 binding.progressBar.isVisible
             }
-
             is State.Success -> {
                 binding.progressBar.isGone
                 binding.textViewError.isGone
                 val user = state.model
                 binding.textViewUserName.text = user.name
                 binding.textViewLogin.text = user.login
-                binding.textViewBio.text = user.bio
+                binding.textViewBio.apply {
+                    text = user.bio
+                    isVisible = !user.bio.isNullOrBlank()
+                }
                 binding.textViewCompany.text = user.company
-                binding.textViewLocation.text = user.login
-                binding.textViewWebSite.text = user.blog
-                binding.textViewTwitter.text = user.twitterUsername
-                binding.textViewFollowers.text = user.followers.toString()
-                binding.textViewFollowing.text = user.following.toString()
-                binding.textViewRepositories.text = user.publicRepos.toString()
+                binding.textViewLocation.text = user.location
+                binding.textViewWebSite.apply {
+                    text = user.blog
+                    isVisible = !user.blog.isNullOrBlank()
+                }
+                binding.textViewTwitter.apply {
+                    text = user.twitterUsername
+                    isVisible = !user.twitterUsername.isNullOrBlank()
+                }
+                binding.textViewFollowers.text = user.followers.toString() + "    Followers"
+                binding.textViewFollowing.text = user.following.toString() + "    Following"
+                binding.textViewRepositories.text = "Repositories     " + user.publicRepos.toString()
 
                 Glide.with(this)
                     .load(user.avatarUrl)
@@ -78,10 +87,6 @@ class UserFragment(): Fragment(R.layout.fragment_user){
                 }
             }
         }
-
-
-
-
 
     }
 

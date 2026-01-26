@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:name="com.andreicampigotto.githubusersapi.presentation.user.UserFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph="@navigation/nav_graph"
         tools:layout="@layout/fragment_user" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

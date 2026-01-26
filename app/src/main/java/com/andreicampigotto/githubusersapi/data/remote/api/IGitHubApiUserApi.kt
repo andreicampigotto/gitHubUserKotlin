@@ -6,7 +6,7 @@ import retrofit2.http.Path
 
 interface IGitHubUserApi {
 
-    @GET("")
+    @GET("users/{userName}")
     suspend fun getUserInfo(
         @Path("userName")
         userName: String
