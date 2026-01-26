@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragmente_user">
+
+    <com.google.android.material.search.SearchBar
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        tools:hint="search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="gravity"
+        android:gravity="center|center"/>
+
+
+    <ImageView
+        android:id="@+id/imageViewUser"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textViewUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:padding="8dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageViewUser"
+        app:layout_constraintTop_toTopOf="@+id/imageViewUser"
+        tools:text="Name" />
+
+    <TextView
+        android:id="@+id/textViewLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewUser"
+        app:layout_constraintEnd_toEndOf="@+id/textViewUserName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewUserName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserName"
+        app:layout_constraintVertical_bias="0.75"
+        tools:text="Login" />
+
+    <TextView
+        android:id="@+id/textViewBio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        android:drawablePadding="8dp"
+        android:gravity="start|center"
+        android:textAlignment="gravity"
+        app:drawableStartCompat="@drawable/open_book_book_svgrepo_com"
+        app:layout_constraintEnd_toEndOf="@+id/textViewUserName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageViewUser"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewUser"
+        tools:text="Bio" />
+
+    <TextView
+        android:id="@+id/textViewCompany"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        android:maxLines="1"
+        android:drawablePadding="8dp"
+        android:gravity="start|center"
+        android:textAlignment="gravity"
+        app:drawableStartCompat="@drawable/company_svgrepo_com"
+        app:layout_constraintEnd_toStartOf="@+id/textViewLocation"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewBio"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBio"
+        tools:text="Company" />
+
+    <TextView
+        android:id="@+id/textViewLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        android:drawablePadding="8dp"
+        android:gravity="start|center"
+        android:textAlignment="gravity"
+        app:drawableStartCompat="@drawable/location_pin_alt_1_svgrepo_com"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBio"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewCompany"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBio"
+        tools:text="Location" />
+
+    <TextView
+        android:id="@+id/textViewWebSite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:drawableStartCompat="@drawable/website_click_svgrepo_com"
+        tools:text="WebSite"
+        android:padding="8dp"
+        android:textSize="16sp"
+        android:drawablePadding="8dp"
+        android:gravity="start|center"
+        android:textAlignment="gravity"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLocation"
+        app:layout_constraintStart_toStartOf="@+id/textViewCompany"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCompany" />
+
+    <TextView
+        android:id="@+id/textViewTwitter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:drawableStartCompat="@drawable/twitter_logo_thin_svgrepo_com"
+        tools:text="Twitter"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        android:drawablePadding="8dp"
+        android:gravity="start|center"
+        android:textAlignment="gravity"
+        app:layout_constraintEnd_toEndOf="@+id/textViewWebSite"
+        app:layout_constraintStart_toStartOf="@+id/textViewWebSite"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWebSite" />
+
+    <TextView
+        android:id="@+id/textViewFollowers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:drawableStartCompat="@drawable/profile_svgrepo_com"
+        tools:text="Followers"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        android:drawablePadding="8dp"
+        android:gravity="start|center"
+        android:textAlignment="gravity"
+        app:layout_constraintEnd_toStartOf="@+id/textViewFollowing"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/textViewTwitter"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTwitter" />
+
+    <TextView
+        android:id="@+id/textViewFollowing"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Following"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTwitter"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewFollowers"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTwitter" />
+
+    <TextView
+        android:id="@+id/textViewRepositories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:drawableStartCompat="@drawable/repository_svgrepo_com"
+        tools:text="Repositories"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        android:drawablePadding="8dp"
+        android:gravity="start|center"
+        android:textAlignment="gravity"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFollowing"
+        app:layout_constraintStart_toStartOf="@+id/textViewFollowers"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFollowers" />
+
+    <TextView
+        android:id="@+id/textViewError"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center|center"
+        android:textSize="24sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="An error occurred, please try again later" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
