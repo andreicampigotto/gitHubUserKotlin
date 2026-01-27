@@ -2,10 +2,14 @@ package com.andreicampigotto.githubusersapi.presentation.user
 
 
 import android.R.attr.visible
+import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -13,7 +17,9 @@ import com.andreicampigotto.githubusersapi.data.repository.State
 import com.andreicampigotto.githubusersapi.databinding.FragmentUserBinding
 import com.andreicampigotto.githubusersapi.domain.model.UserModel
 import com.bumptech.glide.Glide
+import kotlinx.coroutines.flow.MutableStateFlow
 import org.koin.android.ext.android.inject
+
 
 
 class UserFragment(): Fragment(){
@@ -41,8 +47,10 @@ class UserFragment(): Fragment(){
             super.onViewCreated(view, savedInstanceState)
 
             observables()
-            viewModel.getUserInfo("andreicampigotto")
-            //searchRepository()
+            viewModel.getUserInfo(
+                searchUser()
+            )
+
         }
 
 
@@ -90,7 +98,22 @@ class UserFragment(): Fragment(){
 
     }
 
-    private fun searchUser() {
+
+    private fun searchUser(): String {
+
+        var search =  binding.searchBar
+        val imm = view?.context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+        search.hint = "..."
+        search.setOnClickListener {
+            search.requestFocus()
+             imm.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT)
+        }
+
+        val query = search.text.toString()
+
+
+    return "Andreicampigotto"
 
     }
 
