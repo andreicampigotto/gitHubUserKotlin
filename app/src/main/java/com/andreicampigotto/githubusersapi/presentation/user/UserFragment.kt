@@ -2,14 +2,10 @@ package com.andreicampigotto.githubusersapi.presentation.user
 
 
 import android.R.attr.visible
-import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -17,9 +13,7 @@ import com.andreicampigotto.githubusersapi.data.repository.State
 import com.andreicampigotto.githubusersapi.databinding.FragmentUserBinding
 import com.andreicampigotto.githubusersapi.domain.model.UserModel
 import com.bumptech.glide.Glide
-import kotlinx.coroutines.flow.MutableStateFlow
 import org.koin.android.ext.android.inject
-
 
 
 class UserFragment(): Fragment(){
@@ -41,6 +35,7 @@ class UserFragment(): Fragment(){
         viewModel.users.observe(viewLifecycleOwner){
             loadUser(it)
         }
+        searchUser()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,9 +43,9 @@ class UserFragment(): Fragment(){
 
             observables()
             viewModel.getUserInfo(
-                searchUser()
+                "andreicampigotto"
             )
-
+        searchUser()
         }
 
 
@@ -98,23 +93,14 @@ class UserFragment(): Fragment(){
 
     }
 
-
     private fun searchUser(): String {
+        var search = binding.textInputLayoutSearch
 
-        var search =  binding.searchBar
-        val imm = view?.context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        search.setHint("...")
+//        search.requestFocus()
 
-        search.hint = "..."
-        search.setOnClickListener {
-            search.requestFocus()
-             imm.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT)
-        }
-
-        val query = search.text.toString()
-
-
-    return "Andreicampigotto"
-
+//        if (search.keyboardNavigationClusterSearch())
+        return search.editText!!.text.toString()
     }
 
 }
