@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -25,27 +26,30 @@ class UserFragment(): Fragment(){
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentUserBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
 
     private fun observables() {
+
         viewModel.users.observe(viewLifecycleOwner){
             loadUser(it)
         }
+        binding.TextInputEditTextSearch.onFocusChangeListener
+
         searchUser()
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
 
+            viewModel.getUserInfo("andreicampigotto")
+
             observables()
-            viewModel.getUserInfo(
-                "andreicampigotto"
-            )
-        searchUser()
+            searchUser()
         }
 
 
@@ -83,7 +87,7 @@ class UserFragment(): Fragment(){
                     .into(binding.imageViewUser)
             }
             is State.Error ->{
-                binding.progressBar.isGone
+                binding.progressBar.isVisible
                 binding.textViewError.apply {
                     visible
                     text = state.message
@@ -93,14 +97,24 @@ class UserFragment(): Fragment(){
 
     }
 
-    private fun searchUser(): String {
-        var search = binding.textInputLayoutSearch
+    private fun searchUser() {
+        val search = binding.TextInputEditTextSearch
+
+        search.setOnEditorActionListener {  v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                val query = v.text.toString()
+
+                viewModel.getUserInfo(binding.TextInputEditTextSearch.toString())
+                viewModel.getUserInfo(query)
+                true
+            } else {
+                false
+            } }
 
         search.setHint("...")
-//        search.requestFocus()
+        search.requestFocus()
 
-//        if (search.keyboardNavigationClusterSearch())
-        return search.editText!!.text.toString()
+
     }
 
 }
