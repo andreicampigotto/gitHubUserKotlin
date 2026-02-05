@@ -37,7 +37,6 @@ class UserFragment(): Fragment(){
         viewModel.users.observe(viewLifecycleOwner){
             loadUser(it)
         }
-        binding.TextInputEditTextSearch.onFocusChangeListener
 
         searchUser()
 
@@ -53,7 +52,7 @@ class UserFragment(): Fragment(){
         }
 
 
-    fun loadUser(state: State<UserModel>) {
+    private fun loadUser(state: State<UserModel>) {
         when (state) {
             is State.Loading -> {
                 binding.progressBar.isVisible
@@ -62,29 +61,30 @@ class UserFragment(): Fragment(){
                 binding.progressBar.isGone
                 binding.textViewError.isGone
                 val user = state.model
-                binding.textViewUserName.text = user.name
-                binding.textViewLogin.text = user.login
-                binding.textViewBio.apply {
+                binding.includeCard
+                    .textViewUserName.text = user.name
+                binding.includeCard.textViewLogin.text = user.login
+                binding.includeCard.textViewBio.apply {
                     text = user.bio
                     isVisible = !user.bio.isNullOrBlank()
                 }
-                binding.textViewCompany.text = user.company
-                binding.textViewLocation.text = user.location
-                binding.textViewWebSite.apply {
+                binding.includeCard.textViewCompany.text = user.company
+                binding.includeCard.textViewLocation.text = user.location
+                binding.includeCard.textViewWebSite.apply {
                     text = user.blog
                     isVisible = !user.blog.isNullOrBlank()
                 }
-                binding.textViewTwitter.apply {
+                binding.includeCard.textViewTwitter.apply {
                     text = user.twitterUsername
                     isVisible = !user.twitterUsername.isNullOrBlank()
                 }
-                binding.textViewFollowers.text = user.followers.toString() + "    Followers"
-                binding.textViewFollowing.text = user.following.toString() + "    Following"
-                binding.textViewRepositories.text = "Repositories     " + user.publicRepos.toString()
+                binding.includeCard.textViewFollowers.text = "${user.followers}      Followers"
+                binding.includeCard.textViewFollowing.text = "${ user.following }     Following"
+                binding.includeCard.textViewRepositories.text = "Repositories     ${user.publicRepos}"
 
                 Glide.with(this)
                     .load(user.avatarUrl)
-                    .into(binding.imageViewUser)
+                    .into(binding.includeCard.imageViewUser)
             }
             is State.Error ->{
                 binding.progressBar.isVisible
@@ -98,13 +98,13 @@ class UserFragment(): Fragment(){
     }
 
     private fun searchUser() {
-        val search = binding.TextInputEditTextSearch
+        val search = binding.textInputEditTextSearch
 
         search.setOnEditorActionListener {  v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 val query = v.text.toString()
 
-                viewModel.getUserInfo(binding.TextInputEditTextSearch.toString())
+                viewModel.getUserInfo(binding.textInputEditTextSearch.toString())
                 viewModel.getUserInfo(query)
                 true
             } else {

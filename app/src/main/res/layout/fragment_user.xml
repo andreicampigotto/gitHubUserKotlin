@@ -24,7 +24,7 @@
         app:startIconDrawable="@drawable/ic_baseline_search_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TextInputEditTextSearch"
+            android:id="@+id/textInputEditTextSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -33,210 +33,19 @@
             android:imeOptions="actionSearch"/>
 
     </com.google.android.material.textfield.TextInputLayout>
-    <View
-        android:id="@+id/viewTop"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSearch"
-        android:layout_marginVertical="8dp"
-        app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/imageViewUser"
-        android:layout_width="112dp"
-        android:layout_height="112dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewTop"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/textViewUserName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:padding="8dp"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageViewUser"
-        app:layout_constraintTop_toTopOf="@+id/imageViewUser"
-        tools:text="Name" />
-
-    <TextView
-        android:id="@+id/textViewLogin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:paddingStart="8dp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewUser"
-        app:layout_constraintEnd_toEndOf="@+id/textViewUserName"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewUserName"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUserName"
-        app:layout_constraintVertical_bias="0.0"
-        tools:text="Login" />
-
-    <TextView
-        android:id="@+id/textViewBio"
+    <include
+        android:id="@+id/includeCard"
+        layout="@layout/card_user"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:drawablePadding="8dp"
         android:layout_marginHorizontal="8dp"
-        android:gravity="start|center"
-        android:padding="8dp"
-        android:textAlignment="gravity"
-        android:textSize="16sp"
-        app:drawableStartCompat="@drawable/open_book_book_svgrepo_com"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewUser"
-        tools:text="Bio" />
-
-    <TextView
-        android:id="@+id/textViewCompany"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:drawablePadding="8dp"
-        android:gravity="start|center"
-        android:maxLines="1"
-        android:padding="8dp"
-        android:textAlignment="gravity"
-        android:layout_marginStart="8dp"
-        android:textSize="16sp"
-        app:drawableStartCompat="@drawable/company_svgrepo_com"
-        app:layout_constraintEnd_toStartOf="@+id/textViewLocation"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBio"
-        tools:text="Company" />
-
-    <TextView
-        android:id="@+id/textViewLocation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:drawablePadding="8dp"
-        android:gravity="start|center"
-        android:padding="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="gravity"
-        android:textSize="16sp"
-        app:drawableStartCompat="@drawable/location_pin_alt_1_svgrepo_com"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textViewCompany"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBio"
-        tools:text="Location" />
-
-    <TextView
-        android:id="@+id/textViewWebSite"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:drawablePadding="8dp"
-        android:gravity="start|center"
-        android:layout_marginHorizontal="8dp"
-        android:padding="8dp"
-        android:textAlignment="gravity"
-        android:textSize="16sp"
-        app:drawableStartCompat="@drawable/website_click_svgrepo_com"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCompany"
-        tools:text="WebSite" />
-
-    <TextView
-        android:id="@+id/textViewTwitter"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="8dp"
-        android:drawablePadding="8dp"
-        android:gravity="start|center"
-        android:padding="8dp"
-        android:textAlignment="gravity"
-        android:textSize="16sp"
-        app:drawableStartCompat="@drawable/twitter_logo_thin_svgrepo_com"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWebSite"
-        tools:text="Twitter" />
-
-    <TextView
-        android:id="@+id/textViewFollowers"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:drawablePadding="8dp"
-        android:gravity="start|center"
-        android:padding="8dp"
-        android:textAlignment="gravity"
-        android:layout_marginStart="8dp"
-        android:textSize="16sp"
-        app:drawableStartCompat="@drawable/profile_svgrepo_com"
-        app:layout_constraintEnd_toStartOf="@+id/textViewFollowing"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTwitter"
-        tools:text="Followers" />
-
-    <TextView
-        android:id="@+id/textViewFollowing"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:padding="8dp"
-        android:textSize="16sp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textViewFollowers"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTwitter"
-        tools:text="Following" />
-
-    <TextView
-        android:id="@+id/textViewRepositories"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:drawablePadding="8dp"
-        android:gravity="start|center"
-        android:layout_marginHorizontal="8dp"
-        android:padding="8dp"
-        android:textAlignment="gravity"
-        android:textSize="16sp"
-        app:drawableStartCompat="@drawable/repository_svgrepo_com"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFollowers"
-        tools:text="Repositories" />
-
-    <View
-        android:id="@+id/viewBottom"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRepositories"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutSearch"
+        app:layout_constraintVertical_bias="0.0"/>
 
     <TextView
         android:id="@+id/textViewError"

@@ -13,9 +13,6 @@ private const val BASE_URL = "https://api.github.com/"
 
 class HTTPClient {
 
-    private val httpClient = OkHttpClient.Builder()
-        .build()
-
     private val provideRetrofit: Retrofit =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
